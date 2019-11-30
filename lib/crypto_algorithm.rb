@@ -19,15 +19,8 @@ module CryptoAlgorithm
     end
     # calcula d, o inverso multiplicativo de e
     d = e.to_bn.mod_inverse(phi_n)
-    #puts "p #{p} #{p.class}"
-    #puts "q #{q} #{q.class}"
-    #puts "n #{n} #{n.class}"
-    #puts "e #{e} #{e.class}"
-    #puts "d #{d} #{d.class}"
     pub_key = [n, e]
     pvt_key = [n, d]
-    #puts "Chave pública: #{pub_key}"
-    #puts "Chave privada: #{pvt_key}"
     return [pub_key, pvt_key]
   end
 
