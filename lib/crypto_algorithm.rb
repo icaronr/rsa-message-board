@@ -38,9 +38,10 @@ module CryptoAlgorithm
   end
 end
 
-# include CryptoAlgorithm
-# pub, pvt = generate_keys
-# msg = "O Toin tem cara de vasilaaao"
-# enc_msg = encrypt pub, msg
-# dec_msg = decrypt pvt, enc_msg
-# puts dec_msg
+include CryptoAlgorithm
+pub, pvt = generate_keys
+msg = "O Toin tem cara de vasilaaao"
+enc_msg = encrypt pub, msg
+p enc_msg.class
+dec_msg = decrypt pvt, enc_msg
+puts dec_msg

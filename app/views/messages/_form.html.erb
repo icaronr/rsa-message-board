@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :ciphertext %>
-    <%= form.text_area :ciphertext %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sender_name %>
-    <%= form.text_field :sender_name %>
+    <%= form.label :plaintext %>
+    <%= form.text_area :plaintext %>
   </div>
 
   <div class="field">
     <%= form.label :receiver_name %>
-    <%= form.text_field :receiver_name %>
+    <%= form.collection_select :receiver_name, @users, :username, :username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sender_name %>
+    <%= form.hidden_field :sender_name, value: current_user.username %>
   </div>
 
   <div class="actions">
