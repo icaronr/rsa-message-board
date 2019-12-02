@@ -27,20 +27,20 @@ module CryptoAlgorithm
   def encrypt key, plaintext
     n, e = key
     bn_plaintext = OpenSSL::BN.new(plaintext, 2)   
-    cyphertext = bn_plaintext.mod_exp(e, n)
-    return cyphertext
+    ciphertext = bn_plaintext.mod_exp(e, n)
+    return ciphertext
   end
   
-  def decrypt key, cyphertext
+  def decrypt key, ciphertext
     n, d = key
-    plaintext = cyphertext.mod_exp(d, n).to_s(2)
+    plaintext = ciphertext.mod_exp(d, n).to_s(2)
     return plaintext
   end
 end
 
-include CryptoAlgorithm
-pub, pvt = generate_keys
-msg = "O Toin tem cara de vasilaaao"
-enc_msg = encrypt pub, msg
-dec_msg = decrypt pvt, enc_msg
-puts dec_msg
+# include CryptoAlgorithm
+# pub, pvt = generate_keys
+# msg = "O Toin tem cara de vasilaaao"
+# enc_msg = encrypt pub, msg
+# dec_msg = decrypt pvt, enc_msg
+# puts dec_msg

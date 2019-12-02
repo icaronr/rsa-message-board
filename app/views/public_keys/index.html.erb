@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Public Keys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @public_keys.each do |public_key| %>
+      <tr>
+        <td><%= public_key.key %></td>
+        <td><%= public_key.user_id %></td>
+        <td><%= link_to 'Show', public_key %></td>
+        <td><%= link_to 'Edit', edit_public_key_path(public_key) %></td>
+        <td><%= link_to 'Destroy', public_key, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Public Key', new_public_key_path %>

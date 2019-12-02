@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @public_key.key %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @public_key.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_public_key_path(@public_key) %> |
+<%= link_to 'Back', public_keys_path %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ciphertext:</strong>
+  <%= @message.ciphertext %>
+</p>
+
+<p>
+  <strong>Sender name:</strong>
+  <%= @message.sender_name %>
+</p>
+
+<p>
+  <strong>Receiver name:</strong>
+  <%= @message.receiver_name %>
+</p>
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

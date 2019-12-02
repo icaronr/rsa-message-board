@@ -1,0 +1,2 @@
+require 'crypto_algorithm'
+include CryptoAlgorithm
