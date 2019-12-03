@@ -1,24 +1,28 @@
-# README
+# Trabalho Final - Segurança Computacional
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Alunos: 
+- Ícaro Nery Rezende - 15/0037023
+- Matheus Rodrigues Guimarães - 15/0141661
 
-Things you may want to cover:
+## RSA Message Board
 
-* Ruby version
+A ideia do projeto é implementar o algoritmo do RSA e aplicá-lo num quadro de mensagens, de forma que a apenas o destinatário da mensagem consiga visualizá-la corretamente
 
-* System dependencies
+O código para o RSA implementado está no arquivo `lib/crypto_algorithm.rb`, e está dividido em 3 partes:
+1. Geração de chaves
+2. Encriptação da mensagem
+3. Desencriptação da mensagem
 
-* Configuration
+O projeto está implementado em Ruby.
+Para rodar o projeto completo é necessário instalar o Postgresql para a correta utilização do Ruby on Rails.
+Após isso, entrar na pasta raiz do projeto e rodar os seguintes comandos:
+1. `bundle`
+2. `rails db:create db:migrate`
+3. `rails s`
 
-* Database creation
+Com isso o servidor estará rodando e disponível em `localhost:3000`.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Caso queira rodar apenas o RSA, sem o sistema completo:
+1. Descomente o exemplo no final do arquivo
+2. `cd lib`
+3. `ruby crypto_algorithm.rb` 

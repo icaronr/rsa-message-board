@@ -39,9 +39,17 @@ module CryptoAlgorithm
 end
 
 include CryptoAlgorithm
-pub, pvt = generate_keys
-msg = "O Toin tem cara de vasilaaao"
-enc_msg = encrypt pub, msg
-p enc_msg.class
-dec_msg = decrypt pvt, enc_msg
+require 'openssl'
+
+pub1, pvt1 = generate_keys
+pub2, pvt2 = generate_keys
+
+msg = "Quero ver se essa mensagem chega mesmo"
+
+enc_msg = encrypt pub1, msg
+enc_msg = encrypt pvt2, enc_msg.to_s(2)
+
+dec_msg = decrypt pub2, enc_msg
+dec_msg = decrypt pvt1, OpenSSL::BN.new(dec_msg, 2)
+
 puts dec_msg

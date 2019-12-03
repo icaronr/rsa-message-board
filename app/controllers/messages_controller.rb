@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  require 'openssl'
   include CryptoAlgorithm
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
@@ -19,6 +20,7 @@ class MessagesController < ApplicationController
     sender_pub = fix_key(sender_pub) 
     
     text = decrypt(current_user.my_key(current_user.pvt_key), text)
+    text = decrypt(sender_pub, OpenSSL::BN.new(text, 2))
     @message.ciphertext = text
   end
 
@@ -37,17 +39,15 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new#(message_params)
     
-    p params["message"]["plaintext"]
+    
     receiver =  User.find_by(username: params["message"]["receiver_name"])
     receiver_pub = PublicKey.find_by(user_id: receiver.id).key
     receiver_pub = fix_key(receiver_pub) 
-    p receiver_pub
-    p current_user.my_key(current_user.pvt_key)
 
     @message.sender_name = params["message"]["sender_name"]
     @message.receiver_name = params["message"]["receiver_name"]
-    assinado = params["message"]["plaintext"]#encrypt(current_user.my_key(current_user.pvt_key), params["message"]["plaintext"])
-    escondido = encrypt(receiver_pub, assinado)
+    assinado = encrypt(current_user.my_key(current_user.pvt_key), params["message"]["plaintext"])
+    escondido = encrypt(receiver_pub, assinado.to_s(2))
     @message.ciphertext = escondido
 
     respond_to do |format|
