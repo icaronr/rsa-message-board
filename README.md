@@ -14,9 +14,10 @@ O código para o RSA implementado está no arquivo `lib/crypto_algorithm.rb`, e 
 3. Desencriptação da mensagem
 
 O projeto está implementado em Ruby.
-Para rodar o projeto completo é necessário instalar o Postgresql para a correta utilização do Ruby on Rails.
+Para rodar o projeto completo é necessário instalar o Postgresql e o Yarn para a correta utilização do Ruby on Rails.
 Após isso, entrar na pasta raiz do projeto e rodar os seguintes comandos:
 1. `bundle`
+2. `yarn`
 2. `rails db:create db:migrate`
 3. `rails s`
 
